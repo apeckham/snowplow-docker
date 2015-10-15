@@ -1,0 +1,18 @@
+snowplow-elasticsearch-sink:
+  build: snowplow-elasticsearch-sink
+  environment:
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+  links:
+    - elasticsearch
+
+snowplow-stream-enrich:
+  build: snowplow-stream-enrich
+  environment:
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+
+elasticsearch:
+  image: elasticsearch
+  ports:
+    - "9200:9200"

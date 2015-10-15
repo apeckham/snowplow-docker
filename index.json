@@ -1,0 +1,28 @@
+{
+    "settings": {
+        "analysis": {
+            "analyzer": {
+                "default": {
+                    "type": "keyword"
+                }
+            }
+        }
+    },
+    "mappings": {
+        "enriched": {
+            "_timestamp" : {
+                "enabled" : "yes",
+                "path" : "collector_tstamp"
+            },
+            "_ttl": {
+              "enabled":true,
+              "default": "604800000"
+            },
+            "properties": {
+                "geo_location": {
+                    "type": "geo_point"
+                }
+            }
+        }
+    }
+}
