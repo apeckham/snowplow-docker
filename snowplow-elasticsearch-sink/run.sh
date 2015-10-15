@@ -1,0 +1,2 @@
+sed "s/ELASTICSEARCH_ENDPOINT/$ELASTICSEARCH_ENDPOINT/g" /tmp/elasticsearch-sink.conf >/etc/snowplow/elasticsearch-sink.conf
+exec /usr/bin/java -jar snowplow-elasticsearch-sink.jar --config /etc/snowplow/elasticsearch-sink.conf 
