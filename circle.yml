@@ -1,0 +1,11 @@
+machine:
+  services:
+    - docker
+    
+test:
+  override:
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS -e $DOCKER_EMAIL quay.io
+    - docker build -t quay.io/apeckham/snowplow-stream-enrich:$CIRCLE_BUILD_NUM snowplow-stream-enrich
+    - docker build -t quay.io/apeckham/snowplow-elasticsearch-sink:$CIRCLE_BUILD_NUM snowplow-elasticsearch-sink
+    - docker push quay.io/apeckham/snowplow-stream-enrich:$CIRCLE_BUILD_NUM
+    - docker push quay.io/apeckham/snowplow-elasticsearch-sink:$CIRCLE_BUILD_NUM
